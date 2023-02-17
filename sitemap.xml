@@ -2,17 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
      <loc>https://abe-alt.github.io/</loc>
-     <lastmod>2023-01-18</lastmod>
+     <lastmod>2023-02-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://abe-alt.github.io/shell/</loc>
-     <lastmod>2023-01-18</lastmod>
+     <loc>https://abe-alt.github.io/shell/ex1/</loc>
+     <lastmod>2023-02-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://abe-alt.github.io/python/</loc>
-     <lastmod>2023-01-18</lastmod>
+     <loc>https://abe-alt.github.io/shell/ex2/</loc>
+     <lastmod>2023-02-18</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://abe-alt.github.io/python/ex1/</loc>
+     <lastmod>2023-02-18</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://abe-alt.github.io/python/ex2/</loc>
+     <lastmod>2023-02-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
 </urlset>
