@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://abe-alt.github.io/cheatsheets/LinuxCommandLine/">
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Linux Command Line - Abe's Scripts</title>
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+
+                <!-- Collapsed navigation -->
+                <div class="navbar-header">
+                    <!-- Expander button -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="../..">Abe's Scripts</a>
+                </div>
+
+                <!-- Expanded navigation -->
+                <div class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li >
+                                <a href="../..">Home</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Shell <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li >
+    <a href="../../shell/ex1/">ex1</a>
+</li>
+                                    
+<li >
+    <a href="../../shell/ex2/">ex2</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Python <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li >
+    <a href="../../python/ex1/">ex1</a>
+</li>
+                                    
+<li >
+    <a href="../../python/ex2/">ex2</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Cheat Sheets <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li class="active">
+    <a href="./">Linux Command Line</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li >
+                                <a rel="next" href="../../python/ex2/">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="disabled">
+                                <a rel="prev" >
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#system-information">SYSTEM INFORMATION</a></li>
+        <li class="main "><a href="#hardware-information">HARDWARE INFORMATION</a></li>
+        <li class="main "><a href="#performance-monitoring-and-statistics">PERFORMANCE MONITORING AND STATISTICS</a></li>
+        <li class="main "><a href="#user-information-and-management">USER INFORMATION AND MANAGEMENT</a></li>
+        <li class="main "><a href="#file-and-directory-commands">FILE AND DIRECTORY COMMANDS</a></li>
+        <li class="main "><a href="#process-management">PROCESS MANAGEMENT</a></li>
+        <li class="main "><a href="#file-permissions">FILE PERMISSIONS</a></li>
+        <li class="main "><a href="#networking">NETWORKING</a></li>
+        <li class="main "><a href="#archives-tar-files">ARCHIVES (TAR FILES)</a></li>
+        <li class="main "><a href="#installing-packages">INSTALLING PACKAGES</a></li>
+        <li class="main "><a href="#search">SEARCH</a></li>
+        <li class="main "><a href="#ssh-logins">SSH LOGINS</a></li>
+        <li class="main "><a href="#file-transfers">FILE TRANSFERS</a></li>
+        <li class="main "><a href="#disk-usage">DISK USAGE</a></li>
+        <li class="main "><a href="#directory-navigation">DIRECTORY NAVIGATION</a></li>
+        <li class="main "><a href="#security">SECURITY</a></li>
+        <li class="main "><a href="#logging-and-auditing">LOGGING AND AUDITING</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="system-information">SYSTEM INFORMATION</h1>
+<pre><code>uname -a  # Display Linux system information
+uname -r # Display kernel release information 
+cat /etc/redhat-release # Show which version of Red Hat installed
+lsb_release -a # Show which version of Ubuntu installed
+uptime # Show how long the system has been running + load
+hostname # Show system host name
+hostname -I # Display all local IP addresses of the host
+last reboot # Show system reboot history
+date # Show the current date and time
+cal # Show this month's calendar
+w # Display who is online
+whoami # Who you are logged in as
+</code></pre>
+
+<h1 id="hardware-information">HARDWARE INFORMATION</h1>
+<pre><code>dmesg # Display messages in kernel ring buffer
+cat /proc/cpuinfo # Display CPU information
+cat /proc/meminfo # Display memory information
+free -h # Display free and used memory ( -h for human readable, -m for MB, -g for GB.)
+lspci -tv # Display PCI devices
+lsusb -tv # Display USB devices
+dmidecode # Display DMI/SMBIOS (hardware info) from the BIOS
+hdparm -i /dev/sda # Show info about disk sda
+hdparm -tT /dev/sda # Perform a read speed test on disk sda
+badblocks -s /dev/sda # Test for unreadable blocks on disk sda
+lshw # Display information about CPU, memory, storage, and network interfaces
+</code></pre>
+
+<h1 id="performance-monitoring-and-statistics">PERFORMANCE MONITORING AND STATISTICS</h1>
+<pre><code>top # Display and manage the top processes
+htop # Interactive process viewer (top alternative)
+mpstat 1 # Display processor related statistics
+vmstat 1 # Display virtual memory statistics
+iostat 1 # Display I/O statistics
+tail -100 /var/log/messages # Display the last 100 syslog messages (Use /var/log/syslog for Debian based systems.)
+tcpdump -i eth0 # Capture and display all packets on interface eth0
+tcpdump -i eth0 'port 80' # Monitor all traffic on port 80 ( HTTP )
+lsof # List all open files on the system
+lsof -u user # List files opened by user
+free -h # Display free and used memory ( -h for human readable, -m for MB, -g for GB.)
+watch df -h # Execute &quot;df -h&quot;, showing periodic updates
+mpstat # Display statistics about CPU usage
+pidstat # Display statistics about processes running
+</code></pre>
+
+<h1 id="user-information-and-management">USER INFORMATION AND MANAGEMENT</h1>
+<pre><code>id # Display the user and group ids of your current user.
+last # Display the last users who have logged onto the system.
+who # Show who is logged into the system.
+w # Show who is logged in and what they are doing.
+groupadd test # Create a group named &quot;test&quot;.
+useradd -c &quot;John Smith&quot; -m john # Create an account named john, with a comment of &quot;John Smith&quot; and create the user's home directory.
+userdel john # Delete the john account.
+usermod -aG sales john # Add the john account to the sales group
+</code></pre>
+
+<h1 id="file-and-directory-commands">FILE AND DIRECTORY COMMANDS</h1>
+<pre><code>ls -al # List all files in a long listing (detailed) format
+pwd # Display the present working directory
+mkdir directory # Create a directory
+rm file # Remove (delete) file
+rm -r directory # Remove the directory and its contents recursively
+rm -f file # Force removal of file without prompting for confirmation
+rm -rf directory # Forcefully remove directory recursively
+cp file1 file2 # Copy file1 to file2
+cp -r source_directory destination # Copy source_directory recursively to destination. If destination exists, copy source_directory into destination, otherwise create destination with the contents of source_directory.
+mv file1 file2 # Rename or move file1 to file2. If file2 is an existing directory, move file1 into directory file2
+ln -s /path/to/file linkname # Create symbolic link to linkname
+touch file # Create an empty file or update the access and modification times of file.
+cat file # View the contents of file
+less file # Browse through a text file
+head file # Display the first 10 lines of file
+tail file # Display the last 10 lines of file
+tail -f file # Display the last 10 lines of file and &quot;follow&quot; the file as it grows.
+</code></pre>
+
+<h1 id="process-management">PROCESS MANAGEMENT</h1>
+<pre><code>ps # Display your currently running processes
+ps -ef # Display all the currently running processes on the system.
+ps -ef | grep processname # Display process information for processname
+top # Display and manage the top processes
+htop # Interactive process viewer (top alternative)
+kill pid # Kill process with process ID of pid
+killall processname # Kill all processes named processname
+program &amp; # Start program in the background
+bg # Display stopped or background jobs
+fg # Brings the most recent background job to foreground
+fg n # Brings job n to the foreground
+nohup processname # Runs a process even after user logs out
+</code></pre>
+
+<h1 id="file-permissions">FILE PERMISSIONS</h1>
+<pre><code>chown john /path/to/file # Change ownership of /path/to/file to john
+chgrp sales /path/to/file # Change group ownership of /path/to/file to group sales
+</code></pre>
+
+<h1 id="networking">NETWORKING</h1>
+<pre><code>ip a # Display all network interfaces and IP address
+ip addr show dev eth0 # Display eth0 address and details
+ethtool eth0 # Query or control network driver and hardware settings
+ping host # Send ICMP echo request to host
+whois domain # Display whois information for domain
+dig domain # Display DNS information for domain
+dig -x IP_ADDRESS # Reverse lookup of IP_ADDRESS
+host domain # Display DNS IP address for domain
+hostname -i # Display the network address of the host name.
+hostname -I # Display all local IP addresses of the host.
+wget http://domain.com/file # Download http://domain.com/file
+netstat -nutlp # Display listening tcp and udp ports and corresponding programs
+ifconfig # Display information about network interfaces
+traceroute host # Display the path that packets take to host
+tcpdump # Capture and analyze network traffic
+</code></pre>
+
+<h1 id="archives-tar-files">ARCHIVES (TAR FILES)</h1>
+<pre><code>tar cf archive.tar directory # Create tar named archive.tar containing directory.
+tar xf archive.tar # Extract the contents from archive.tar.
+tar czf archive.tar.gz directory # Create a gzip compressed tar file name archive.tar.gz.
+tar xzf archive.tar.gz # Extract a gzip compressed tar file.
+tar cjf archive.tar.bz2 directory # Create a tar file with bzip2 compression
+tar xjf archive.tar.bz2 # Extract a bzip2 compressed tar file.
+</code></pre>
+
+<h1 id="installing-packages">INSTALLING PACKAGES</h1>
+<pre><code>yum search keyword # Search for a package by keyword.
+yum install package # Install package.
+yum info package # Display description and summary information about package for RHEL based systems.
+rpm -i package.rpm # Install package from local file named package.rpm
+yum remove package # Remove/uninstall package for RHEL based systems.
+yum update package # Update package with name package for RHEL based systems.
+tar zxvf sourcecode.tar.gz # Install software from source code.
+cd sourcecode
+./configure
+make
+make install
+apt-get update # Update package list for Debian based systems.
+apt-get upgrade # Upgrade all installed packages to their newest version for Debian based systems.
+apt-get install package # Install package with name package for Debian based systems.
+apt-remove package # Remove package with name package for Debian based systems.
+</code></pre>
+
+<h1 id="search">SEARCH</h1>
+<pre><code>grep pattern file # Search for pattern in file
+grep -r pattern directory # Search recursively for pattern in directory
+locate name # Find files and directories by name
+find /home/john -name 'prefix*' # Find files in /home/john that start with &quot;prefix&quot;.
+find /home -size +100M # Find files larger than 100MB in /home
+whereis program # Display the location of the binary, source and manual page files of program.
+which program # Display the path of executable that would run if program is executed.
+</code></pre>
+
+<h1 id="ssh-logins">SSH LOGINS</h1>
+<pre><code>ssh host # Connect to host as your local username.
+ssh user@host # Connect to host as user
+ssh -p port user@host # Connect to host using port
+ssh-keygen # Create a new SSH key pair.
+ssh-copy-id user@host # Copy SSH key to the remote host to enable passwordless logins for user.
+</code></pre>
+
+<h1 id="file-transfers">FILE TRANSFERS</h1>
+<pre><code>scp file.txt server:/tmp # Secure copy file.txt to the /tmp folder on server
+scp server:/var/www/*.html /tmp # Copy *.html files from server to the local /tmp folder.
+scp -r server:/var/www /tmp # Copy all files and directories recursively from server to the current system's /tmp folder.
+rsync -a /home /backups/ # Synchronize /home to /backups/home
+rsync -avz /home server:/backups/ # Synchronize files/directories between the local and remote system with compression enabled
+ftp host # Connect to FTP server on the remote host.
+</code></pre>
+
+<h1 id="disk-usage">DISK USAGE</h1>
+<pre><code>df -h # Show free and used space on mounted filesystems
+df -i # Show free and used inodes on mounted filesystems
+fdisk -l # Display disks partitions sizes and types
+du -ah # Display disk usage for all files and directories in human readable format
+du -sh # Display total disk usage off the current directory
+du -a directory # Display size of all files in directory.
+findmnt # List all mounted file systems with details.
+</code></pre>
+
+<h1 id="directory-navigation">DIRECTORY NAVIGATION</h1>
+<pre><code>cd .. # To go up one level of the directory tree. (Change into the parent directory.)
+cd # Go to the $HOME directory
+cd /etc # Change to the /etc directory
+alias goto=’cd /etc/’ # Create goto alias for command cd /etc/ .
+</code></pre>
+
+<h1 id="security">SECURITY</h1>
+<pre><code>passwd # Change the current user's password.
+sudo -i # Switch to the root account with root's environment. (Login shell.)
+sudo -s # Execute your current shell as root. (Non-login shell.)
+sudo -l # List sudo privileges for the current user.
+visudo # Edit the sudoers configuration file.
+getenforce # Display the current SELinux mode.
+sestatus # Display SELinux details such as the current SELinux mode, the configured mode, and the loaded policy.
+setenforce 0 # Change the current SELinux mode to Permissive. (Does not survive a reboot.)
+setenforce 1 # Change the current SELinux mode to Enforcing. (Does not survive a reboot.)
+SELINUX=enforcing # Set the SELinux mode to enforcing on boot by using this setting in the
+/etc/selinux/config file.
+SELINUX=permissive # Set the SELinux mode to permissive on boot by using this setting in the /etc/selinux/config file.
+SELINUX=disabled # Set the SELinux mode to disabled on boot by using this setting in the
+/etc/selinux/config file.
+</code></pre>
+
+<h1 id="logging-and-auditing">LOGGING AND AUDITING</h1>
+<pre><code>dmesg # Display messages in kernel ring buffer.
+journalctl # Display logs stored in the systemd journal.
+journalctl -u servicename # Display logs for a specific unit (service).
+</code></pre></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"search": 83, "next": 78, "help": 191, "previous": 80};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
