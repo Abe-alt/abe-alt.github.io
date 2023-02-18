@@ -6,9 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         
-        <link rel="canonical" href="https://abe-alt.github.io/python/ex1/">
+        <link rel="canonical" href="https://abe-alt.github.io/cheatsheets/PythonVenvCommands/">
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>ex1 - Abe's Scripts</title>
+        <title>Python Virtual Environment Commands - Abe's Scripts</title>
         <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -62,29 +62,29 @@
 </li>
                                 </ul>
                             </li>
-                            <li class="dropdown active">
+                            <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Python <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
-<li class="active">
-    <a href="./">ex1</a>
+<li >
+    <a href="../../python/ex1/">ex1</a>
 </li>
                                     
 <li >
-    <a href="../ex2/">ex2</a>
+    <a href="../../python/ex2/">ex2</a>
 </li>
                                 </ul>
                             </li>
-                            <li class="dropdown">
+                            <li class="dropdown active">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Cheat Sheets <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
 <li >
-    <a href="../../cheatsheets/LinuxCommandLine/">Linux Command Line</a>
+    <a href="../LinuxCommandLine/">Linux Command Line</a>
 </li>
                                     
-<li >
-    <a href="../../cheatsheets/PythonVenvCommands/">Python Virtual Environment Commands</a>
+<li class="active">
+    <a href="./">Python Virtual Environment Commands</a>
 </li>
                                 </ul>
                             </li>
@@ -97,12 +97,12 @@
                             </a>
                         </li>
                             <li >
-                                <a rel="next" href="../../shell/ex2/">
+                                <a rel="next" href="../LinuxCommandLine/">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
-                            <li >
-                                <a rel="prev" href="../ex2/">
+                            <li class="disabled">
+                                <a rel="prev" >
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -114,11 +114,31 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#creating-virtual-environment">Creating virtual environment</a></li>
+        <li class="main "><a href="#activate-a-virtual-environment">Activate a virtual environment</a></li>
+        <li class="main "><a href="#install-the-requirements-file">Install the requirements file</a></li>
+        <li class="main "><a href="#deactivate-a-virtual-environment">Deactivate a virtual environment</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-</div>
+<h2 id="creating-virtual-environment">Creating virtual environment</h2>
+<p>Creation of virtual environments is done by executing the command venv:</p>
+<pre><code>python3 -m venv /path/to/new/virtual/environment
+</code></pre>
+
+<h2 id="activate-a-virtual-environment">Activate a virtual environment</h2>
+<pre><code>$ source &lt;venv&gt;/bin/activate
+</code></pre>
+
+<h2 id="install-the-requirements-file">Install the requirements file</h2>
+<p>Use pip to install all of the packages needed by the environment.</p>
+<pre><code>pip install -r requirements.txt
+</code></pre>
+
+<h2 id="deactivate-a-virtual-environment">Deactivate a virtual environment</h2>
+<pre><code>deactivate
+</code></pre></div>
         </div>
 
         <footer class="col-md-12">
