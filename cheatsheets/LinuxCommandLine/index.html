@@ -331,11 +331,9 @@ getenforce # Display the current SELinux mode.
 sestatus # Display SELinux details such as the current SELinux mode, the configured mode, and the loaded policy.
 setenforce 0 # Change the current SELinux mode to Permissive. (Does not survive a reboot.)
 setenforce 1 # Change the current SELinux mode to Enforcing. (Does not survive a reboot.)
-SELINUX=enforcing # Set the SELinux mode to enforcing on boot by using this setting in the
-/etc/selinux/config file.
+SELINUX=enforcing # Set the SELinux mode to enforcing on boot by using this setting in the /etc/selinux/config file.
 SELINUX=permissive # Set the SELinux mode to permissive on boot by using this setting in the /etc/selinux/config file.
-SELINUX=disabled # Set the SELinux mode to disabled on boot by using this setting in the
-/etc/selinux/config file.
+SELINUX=disabled # Set the SELinux mode to disabled on boot by using this setting in the /etc/selinux/config file.
 </code></pre>
 
 <h2 id="logging-and-auditing">LOGGING AND AUDITING</h2>
