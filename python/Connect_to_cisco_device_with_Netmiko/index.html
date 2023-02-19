@@ -197,7 +197,12 @@ for device_type in [IOS]:
 
     connection.disconnect()
 
-</code></pre></div>
+</code></pre>
+
+<p>The <code>netmiko_connect()</code> function takes a <code>device_type</code> argument, uses the connection details from the <strong>cisco_sandbox_devices</strong> dictionary to establish an SSH connection to the device using <strong>Netmiko</strong>, and returns the connection object.</p>
+<p>The <code>disconnect()</code> function takes a connection argument and uses the <code>disconnect()</code> method from Netmiko to close the SSH connection.</p>
+<p>Several constants are defined that represent Cisco IOS CLI commands, and a dictionary called commands maps these commands to their equivalent Cisco IOS CLI commands.</p>
+<p>The script then iterates over the commands dictionary, establishing a connection to the <strong>Cisco IOS device</strong> using <code>netmiko_connect()</code>, and using the <code>send_command()</code> method of the connection object to send each command and print the resulting output to the console. Finally, the connection is closed using the <code>disconnect()</code> function.</p></div>
         </div>
 
         <footer class="col-md-12">
