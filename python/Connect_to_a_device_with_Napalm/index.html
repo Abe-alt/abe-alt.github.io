@@ -6,9 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         
-        <link rel="canonical" href="https://abe-alt.github.io/python/Connect_to_cisco_device_with_Netmiko/">
+        <link rel="canonical" href="https://abe-alt.github.io/python/Connect_to_a_device_with_Napalm/">
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Connect to a Cisco device with Netmiko - Abe's Scripts</title>
+        <title>Connect to a device with Napalm - Abe's Scripts</title>
         <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -66,12 +66,12 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Python <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
-<li class="active">
-    <a href="./">Connect to a Cisco device with Netmiko</a>
+<li >
+    <a href="../Connect_to_a_Cisco_device_with_Netmiko/">Connect to a Cisco device with Netmiko</a>
 </li>
                                     
-<li >
-    <a href="../ex2/">ex2</a>
+<li class="active">
+    <a href="./">Connect to a device with Napalm</a>
 </li>
                                 </ul>
                             </li>
@@ -97,12 +97,12 @@
                             </a>
                         </li>
                             <li >
-                                <a rel="next" href="../../shell/ex2/">
+                                <a rel="next" href="../Connect_to_a_Cisco_device_with_Netmiko/">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li >
-                                <a rel="prev" href="../ex2/">
+                                <a rel="prev" href="../../cheatsheets/LinuxCommandLine/">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -114,95 +114,74 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#connect-to-a-cisco-device-with-netmiko">Connect to a Cisco device with Netmiko</a></li>
+        <li class="main active"><a href="#connect-to-a-device-with-napalm">Connect to a device with Napalm</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="connect-to-a-cisco-device-with-netmiko">Connect to a Cisco device with Netmiko</h1>
-<p>This Python script uses the Netmiko module to establish SSH connections to a <strong>Cisco IOS</strong> device and execute CLI commands on that device.</p>
-<pre><code>from netmiko import Netmiko
-
-cisco_sandbox_devices = {
-    &quot;ios&quot;: {
-        &quot;hostname&quot;: &quot;sandbox-iosxe-latest-1.cisco.com&quot;,
-        &quot;port&quot;: 22,
-        &quot;username&quot;: &quot;developer&quot;,
-        &quot;password&quot;: &quot;C1sco12345&quot;,
-        &quot;device_type&quot;: &quot;cisco_ios&quot;,
-     },
-}
-
-def netmiko_connect(device_type):
-
-    print(
-        f&quot;\n\nConnecting to {cisco_sandbox_devices[device_type]['hostname']}:{cisco_sandbox_devices[device_type]['port']}&quot;
-    )
-    print(&quot;... this may take a little while.&quot;)
-
-    connection = Netmiko(
-        cisco_sandbox_devices[device_type][&quot;hostname&quot;],
-        port=cisco_sandbox_devices[device_type][&quot;port&quot;],
-        username=cisco_sandbox_devices[device_type][&quot;username&quot;],
-        password=cisco_sandbox_devices[device_type][&quot;password&quot;],
-        device_type=cisco_sandbox_devices[device_type][&quot;device_type&quot;],
-    )
-
-    return connection
-
-
-def disconnect(connection):
-    connection.disconnect()
-
-
-SHOW_IP_ROUTE = &quot;ip route&quot;
-SHOW_ARP = &quot;arp&quot;
-SHOW_INT_DESCRIPTION = &quot;int description&quot;
-SHOW_INT_BRIEF = &quot;int brief&quot;
-SHOW_VERSION = &quot;version&quot;
+<h1 id="connect-to-a-device-with-napalm">Connect to a device with Napalm</h1>
+<p>NAPALM (Network Automation and Programmability Abstraction Layer with Multivendor support) is a Python library that implements a set of functions to interact with different network device Operating Systems using a unified API.
+Useful library to coonect to devices without worrying about their type.</p>
+<pre><code>import napalm
+import json
+import copy
+from connect import cisco_sandbox_devices
 
 IOS = &quot;ios&quot;
-commands = {SHOW_IP_ROUTE: {IOS: &quot;show ip route&quot;},
-            SHOW_ARP: {IOS: &quot;show arp&quot;},
-            SHOW_INT_DESCRIPTION: {IOS: &quot;show interfaces description&quot;},
-            SHOW_INT_BRIEF: {IOS: &quot;show ip interface brief&quot;},
-            SHOW_VERSION: {IOS: &quot;show version&quot;}
-            }
+NXOS = &quot;nxos&quot;
+NXOS_SSH = &quot;nxos_ssh&quot;
 
-# CYCLE THROUGH DIFFERENT DEVICE TYPES
-for device_type in [IOS]:
+devices = copy.deepcopy(cisco_sandbox_devices)
 
-    connection = netmiko_connect(device_type)
-    print('connection:', connection)
+for device_type, device in devices.items():
 
-    print(f&quot;\n\n----- showing running configuration for {device_type} -------------------&quot;)
-    output = connection.send_command(&quot;show running-config&quot;)
-    print(output)
+    print(f&quot;\n----- connecting to device {device_type}: {device['hostname']} ----------&quot;)
+    driver = napalm.get_network_driver(device_type)
+    if device_type == IOS:
+        napalm_device = driver(
+            hostname=device[&quot;hostname&quot;],
+            username=device[&quot;username&quot;],
+            password=device[&quot;password&quot;],
+        )
+    else:
+        napalm_device = driver(
+            hostname=device[&quot;hostname&quot;],
+            username=device[&quot;username&quot;],
+            password=device[&quot;password&quot;],
+            optional_args={&quot;port&quot;: device[&quot;port&quot;]},
+        )
 
-    print(f&quot;\n\n----- showing ip route for {device_type} -------------------&quot;)
-    output = connection.send_command(commands[SHOW_IP_ROUTE][device_type])
-    print(output)
+    napalm_device.open()
 
-    print(f&quot;\n\n----- showing arp table for {device_type} -------------------&quot;)
-    output = connection.send_command(commands[SHOW_ARP][device_type])
-    print(output)
+    print(&quot;\n----- facts ----------&quot;)
+    print(json.dumps(napalm_device.get_facts(), sort_keys=True, indent=4))
 
-    print(f&quot;\n\n----- showing interface description for {device_type} -------------------&quot;)
-    output = connection.send_command(commands[SHOW_INT_DESCRIPTION][device_type])
-    print(output)
+    print(&quot;\n----- interfaces ----------&quot;)
+    print(json.dumps(napalm_device.get_interfaces(), sort_keys=True, indent=4))
 
-    print(f&quot;\n\n----- showing interface brief for {device_type} -------------------&quot;)
-    output = connection.send_command(commands[SHOW_INT_BRIEF][device_type])
-    print(output)
+    print(&quot;\n----- vlans ----------&quot;)
+    try:
+        print(json.dumps(napalm_device.get_vlans(), sort_keys=True, indent=4))
+    except NotImplementedError as e:
+        print(f&quot;oops, looks like this isn't implemented for {device['hostname']}, error: {e}&quot;)
 
-    connection.disconnect()
+    print(&quot;\n----- snmp ----------&quot;)
+    print(json.dumps(napalm_device.get_snmp_information(), sort_keys=True, indent=4))
 
-</code></pre>
+    print(&quot;\n----- interface counters ----------&quot;)
+    try:
+        print(json.dumps(napalm_device.get_interfaces_counters(), sort_keys=True, indent=4))
+    except NotImplementedError as e:
+        print(f&quot;oops, looks like this isn't implemented for {device['hostname']}, error: {e}&quot;)
 
-<p>The <code>netmiko_connect()</code> function takes a <code>device_type</code> argument, uses the connection details from the <strong>cisco_sandbox_devices</strong> dictionary to establish an SSH connection to the device using <strong>Netmiko</strong>, and returns the connection object.</p>
-<p>The <code>disconnect()</code> function takes a connection argument and uses the <code>disconnect()</code> method from Netmiko to close the SSH connection.</p>
-<p>Several constants are defined that represent Cisco IOS CLI commands, and a dictionary called commands maps these commands to their equivalent Cisco IOS CLI commands.</p>
-<p>The script then iterates over the commands dictionary, establishing a connection to the <strong>Cisco IOS device</strong> using <code>netmiko_connect()</code>, and using the <code>send_command()</code> method of the connection object to send each command and print the resulting output to the console. Finally, the connection is closed using the <code>disconnect()</code> function.</p></div>
+    print(&quot;\n----- environment ----------&quot;)
+    try:
+        print(json.dumps(napalm_device.get_environment(), sort_keys=True, indent=4))
+    except (KeyError, IOError, napalm.pyIOSXR.exceptions.XMLCLIError) as e:
+        print(f&quot;oops, looks like there is a NAPALM exception for {device['hostname']}, error: {e}&quot;)
+
+    napalm_device.close()
+</code></pre></div>
         </div>
 
         <footer class="col-md-12">

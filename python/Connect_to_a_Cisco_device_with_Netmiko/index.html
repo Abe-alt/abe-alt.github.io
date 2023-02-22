@@ -6,9 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         
-        <link rel="canonical" href="https://abe-alt.github.io/python/ex2/">
+        <link rel="canonical" href="https://abe-alt.github.io/python/Connect_to_a_Cisco_device_with_Netmiko/">
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>ex2 - Abe's Scripts</title>
+        <title>Connect to a Cisco device with Netmiko - Abe's Scripts</title>
         <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -66,12 +66,12 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Python <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
-<li >
-    <a href="../Connect_to_cisco_device_with_Netmiko/">Connect to a Cisco device with Netmiko</a>
+<li class="active">
+    <a href="./">Connect to a Cisco device with Netmiko</a>
 </li>
                                     
-<li class="active">
-    <a href="./">ex2</a>
+<li >
+    <a href="../Connect_to_a_device_with_Napalm/">Connect to a device with Napalm</a>
 </li>
                                 </ul>
                             </li>
@@ -97,12 +97,12 @@
                             </a>
                         </li>
                             <li >
-                                <a rel="next" href="../Connect_to_cisco_device_with_Netmiko/">
+                                <a rel="next" href="../../shell/ex2/">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li >
-                                <a rel="prev" href="../../cheatsheets/LinuxCommandLine/">
+                                <a rel="prev" href="../Connect_to_a_device_with_Napalm/">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -114,11 +114,95 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#connect-to-a-cisco-device-with-netmiko">Connect to a Cisco device with Netmiko</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-</div>
+<h1 id="connect-to-a-cisco-device-with-netmiko">Connect to a Cisco device with Netmiko</h1>
+<p>This Python script uses the Netmiko module to establish SSH connections to a <strong>Cisco IOS</strong> device and execute CLI commands on that device.</p>
+<pre><code>from netmiko import Netmiko
+
+cisco_sandbox_devices = {
+    &quot;ios&quot;: {
+        &quot;hostname&quot;: &quot;sandbox-iosxe-latest-1.cisco.com&quot;,
+        &quot;port&quot;: 22,
+        &quot;username&quot;: &quot;developer&quot;,
+        &quot;password&quot;: &quot;C1sco12345&quot;,
+        &quot;device_type&quot;: &quot;cisco_ios&quot;,
+     },
+}
+
+def netmiko_connect(device_type):
+
+    print(
+        f&quot;\n\nConnecting to {cisco_sandbox_devices[device_type]['hostname']}:{cisco_sandbox_devices[device_type]['port']}&quot;
+    )
+    print(&quot;... this may take a little while.&quot;)
+
+    connection = Netmiko(
+        cisco_sandbox_devices[device_type][&quot;hostname&quot;],
+        port=cisco_sandbox_devices[device_type][&quot;port&quot;],
+        username=cisco_sandbox_devices[device_type][&quot;username&quot;],
+        password=cisco_sandbox_devices[device_type][&quot;password&quot;],
+        device_type=cisco_sandbox_devices[device_type][&quot;device_type&quot;],
+    )
+
+    return connection
+
+
+def disconnect(connection):
+    connection.disconnect()
+
+
+SHOW_IP_ROUTE = &quot;ip route&quot;
+SHOW_ARP = &quot;arp&quot;
+SHOW_INT_DESCRIPTION = &quot;int description&quot;
+SHOW_INT_BRIEF = &quot;int brief&quot;
+SHOW_VERSION = &quot;version&quot;
+
+IOS = &quot;ios&quot;
+commands = {SHOW_IP_ROUTE: {IOS: &quot;show ip route&quot;},
+            SHOW_ARP: {IOS: &quot;show arp&quot;},
+            SHOW_INT_DESCRIPTION: {IOS: &quot;show interfaces description&quot;},
+            SHOW_INT_BRIEF: {IOS: &quot;show ip interface brief&quot;},
+            SHOW_VERSION: {IOS: &quot;show version&quot;}
+            }
+
+# CYCLE THROUGH DIFFERENT DEVICE TYPES
+for device_type in [IOS]:
+
+    connection = netmiko_connect(device_type)
+    print('connection:', connection)
+
+    print(f&quot;\n\n----- showing running configuration for {device_type} -------------------&quot;)
+    output = connection.send_command(&quot;show running-config&quot;)
+    print(output)
+
+    print(f&quot;\n\n----- showing ip route for {device_type} -------------------&quot;)
+    output = connection.send_command(commands[SHOW_IP_ROUTE][device_type])
+    print(output)
+
+    print(f&quot;\n\n----- showing arp table for {device_type} -------------------&quot;)
+    output = connection.send_command(commands[SHOW_ARP][device_type])
+    print(output)
+
+    print(f&quot;\n\n----- showing interface description for {device_type} -------------------&quot;)
+    output = connection.send_command(commands[SHOW_INT_DESCRIPTION][device_type])
+    print(output)
+
+    print(f&quot;\n\n----- showing interface brief for {device_type} -------------------&quot;)
+    output = connection.send_command(commands[SHOW_INT_BRIEF][device_type])
+    print(output)
+
+    connection.disconnect()
+
+</code></pre>
+
+<p>The <code>netmiko_connect()</code> function takes a <code>device_type</code> argument, uses the connection details from the <strong>cisco_sandbox_devices</strong> dictionary to establish an SSH connection to the device using <strong>Netmiko</strong>, and returns the connection object.</p>
+<p>The <code>disconnect()</code> function takes a connection argument and uses the <code>disconnect()</code> method from Netmiko to close the SSH connection.</p>
+<p>Several constants are defined that represent Cisco IOS CLI commands, and a dictionary called commands maps these commands to their equivalent Cisco IOS CLI commands.</p>
+<p>The script then iterates over the commands dictionary, establishing a connection to the <strong>Cisco IOS device</strong> using <code>netmiko_connect()</code>, and using the <code>send_command()</code> method of the connection object to send each command and print the resulting output to the console. Finally, the connection is closed using the <code>disconnect()</code> function.</p></div>
         </div>
 
         <footer class="col-md-12">
