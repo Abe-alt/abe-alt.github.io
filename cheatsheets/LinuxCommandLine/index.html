@@ -9,100 +9,87 @@
         <link rel="canonical" href="https://abe-alt.github.io/cheatsheets/LinuxCommandLine/">
         <link rel="shortcut icon" href="../../img/favicon.ico">
         <title>Linux Command Line - Abe's Scripts</title>
-        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
-        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
 
         <script src="../../js/jquery-1.10.2.min.js" defer></script>
-        <script src="../../js/bootstrap-3.0.3.min.js" defer></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script> 
     </head>
 
     <body>
-
-        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
-
-                <!-- Collapsed navigation -->
-                <div class="navbar-header">
-                    <!-- Expander button -->
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="../..">Abe's Scripts</a>
-                </div>
+                <a class="navbar-brand" href="../..">Abe's Scripts</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
                 <!-- Expanded navigation -->
-                <div class="navbar-collapse collapse">
+                <div id="navbar-collapse" class="navbar-collapse collapse">
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
-                            <li >
-                                <a href="../..">Home</a>
+                            <li class="navitem">
+                                <a href="../.." class="nav-link">Home</a>
                             </li>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Shell <b class="caret"></b></a>
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Shell <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
-<li >
-    <a href="../../shell/create_user_account/">Create a user account</a>
+<li>
+    <a href="../../shell/create_user_account/" class="dropdown-item">Create a user account</a>
 </li>
                                     
-<li >
-    <a href="../../shell/ex2/">ex2</a>
+<li>
+    <a href="../../shell/ex2/" class="dropdown-item">ex2</a>
 </li>
                                 </ul>
                             </li>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Python <b class="caret"></b></a>
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Python <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
-<li >
-    <a href="../../python/Connect_to_a_Cisco_device_with_Netmiko/">Connect to a Cisco device with Netmiko</a>
+<li>
+    <a href="../../python/Connect_to_a_Cisco_device_with_Netmiko/" class="dropdown-item">Connect to a Cisco device with Netmiko</a>
 </li>
                                     
-<li >
-    <a href="../../python/Connect_to_a_device_with_Napalm/">Connect to a device with Napalm</a>
+<li>
+    <a href="../../python/Connect_to_a_device_with_Napalm/" class="dropdown-item">Connect to a device with Napalm</a>
 </li>
                                 </ul>
                             </li>
                             <li class="dropdown active">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Cheat Sheets <b class="caret"></b></a>
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Cheat Sheets <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
-<li class="active">
-    <a href="./">Linux Command Line</a>
+<li>
+    <a href="./" class="dropdown-item active">Linux Command Line</a>
 </li>
                                     
-<li >
-    <a href="../PythonVenvCommands/">Python Virtual Environment Commands</a>
+<li>
+    <a href="../PythonVenvCommands/" class="dropdown-item">Python Virtual Environment Commands</a>
 </li>
                                 </ul>
                             </li>
                         </ul>
 
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
-                            <li >
-                                <a rel="next" href="../../python/Connect_to_a_device_with_Napalm/">
+                            <li class="nav-item">
+                                <a rel="prev" href="../../python/Connect_to_a_device_with_Napalm/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
-                            <li >
-                                <a rel="prev" href="../PythonVenvCommands/">
+                            <li class="nav-item">
+                                <a rel="next" href="../PythonVenvCommands/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -112,28 +99,106 @@
         </div>
 
         <div class="container">
-                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
-    <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#system-information">SYSTEM INFORMATION</a></li>
-        <li class="main "><a href="#hardware-information">HARDWARE INFORMATION</a></li>
-        <li class="main "><a href="#performance-monitoring-and-statistics">PERFORMANCE MONITORING AND STATISTICS</a></li>
-        <li class="main "><a href="#user-information-and-management">USER INFORMATION AND MANAGEMENT</a></li>
-        <li class="main "><a href="#file-and-directory-commands">FILE AND DIRECTORY COMMANDS</a></li>
-        <li class="main "><a href="#process-management">PROCESS MANAGEMENT</a></li>
-        <li class="main "><a href="#file-permissions">FILE PERMISSIONS</a></li>
-        <li class="main "><a href="#networking">NETWORKING</a></li>
-        <li class="main "><a href="#archives-tar-files">ARCHIVES (TAR FILES)</a></li>
-        <li class="main "><a href="#installing-packages">INSTALLING PACKAGES</a></li>
-        <li class="main "><a href="#search">SEARCH</a></li>
-        <li class="main "><a href="#ssh-logins">SSH LOGINS</a></li>
-        <li class="main "><a href="#file-transfers">FILE TRANSFERS</a></li>
-        <li class="main "><a href="#disk-usage">DISK USAGE</a></li>
-        <li class="main "><a href="#directory-navigation">DIRECTORY NAVIGATION</a></li>
-        <li class="main "><a href="#security">SECURITY</a></li>
-        <li class="main "><a href="#logging-and-auditing">LOGGING AND AUDITING</a></li>
-    </ul>
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="2"><a href="#system-information" class="nav-link">SYSTEM INFORMATION</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#hardware-information" class="nav-link">HARDWARE INFORMATION</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#performance-monitoring-and-statistics" class="nav-link">PERFORMANCE MONITORING AND STATISTICS</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#user-information-and-management" class="nav-link">USER INFORMATION AND MANAGEMENT</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#file-and-directory-commands" class="nav-link">FILE AND DIRECTORY COMMANDS</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#process-management" class="nav-link">PROCESS MANAGEMENT</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#file-permissions" class="nav-link">FILE PERMISSIONS</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#networking" class="nav-link">NETWORKING</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#archives-tar-files" class="nav-link">ARCHIVES (TAR FILES)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#installing-packages" class="nav-link">INSTALLING PACKAGES</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#search" class="nav-link">SEARCH</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#ssh-logins" class="nav-link">SSH LOGINS</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#file-transfers" class="nav-link">FILE TRANSFERS</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#disk-usage" class="nav-link">DISK USAGE</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#directory-navigation" class="nav-link">DIRECTORY NAVIGATION</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#security" class="nav-link">SECURITY</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#logging-and-auditing" class="nav-link">LOGGING AND AUDITING</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
 </div></div>
-                <div class="col-md-9" role="main">
+                    <div class="col-md-9" role="main">
 
 <h2 id="system-information">SYSTEM INFORMATION</h2>
 <pre><code>uname -a  # Display Linux system information
@@ -149,7 +214,6 @@ cal # Show this month's calendar
 w # Display who is online
 whoami # Who you are logged in as
 </code></pre>
-
 <h2 id="hardware-information">HARDWARE INFORMATION</h2>
 <pre><code>dmesg # Display messages in kernel ring buffer
 cat /proc/cpuinfo # Display CPU information
@@ -163,7 +227,6 @@ hdparm -tT /dev/sda # Perform a read speed test on disk sda
 badblocks -s /dev/sda # Test for unreadable blocks on disk sda
 lshw # Display information about CPU, memory, storage, and network interfaces
 </code></pre>
-
 <h2 id="performance-monitoring-and-statistics">PERFORMANCE MONITORING AND STATISTICS</h2>
 <pre><code>top # Display and manage the top processes
 htop # Interactive process viewer (top alternative)
@@ -180,7 +243,6 @@ watch df -h # Execute &quot;df -h&quot;, showing periodic updates
 mpstat # Display statistics about CPU usage
 pidstat # Display statistics about processes running
 </code></pre>
-
 <h2 id="user-information-and-management">USER INFORMATION AND MANAGEMENT</h2>
 <pre><code>id # Display the user and group ids of your current user.
 last # Display the last users who have logged onto the system.
@@ -191,7 +253,6 @@ useradd -c &quot;John Smith&quot; -m john # Create an account named john, with a
 userdel john # Delete the john account.
 usermod -aG sales john # Add the john account to the sales group
 </code></pre>
-
 <h2 id="file-and-directory-commands">FILE AND DIRECTORY COMMANDS</h2>
 <pre><code>ls -al # List all files in a long listing (detailed) format
 pwd # Display the present working directory
@@ -211,7 +272,6 @@ head file # Display the first 10 lines of file
 tail file # Display the last 10 lines of file
 tail -f file # Display the last 10 lines of file and &quot;follow&quot; the file as it grows.
 </code></pre>
-
 <h2 id="process-management">PROCESS MANAGEMENT</h2>
 <pre><code>ps # Display your currently running processes
 ps -ef # Display all the currently running processes on the system.
@@ -226,12 +286,10 @@ fg # Brings the most recent background job to foreground
 fg n # Brings job n to the foreground
 nohup processname # Runs a process even after user logs out
 </code></pre>
-
 <h2 id="file-permissions">FILE PERMISSIONS</h2>
 <pre><code>chown john /path/to/file # Change ownership of /path/to/file to john
 chgrp sales /path/to/file # Change group ownership of /path/to/file to group sales
 </code></pre>
-
 <h2 id="networking">NETWORKING</h2>
 <pre><code>ip a # Display all network interfaces and IP address
 ip addr show dev eth0 # Display eth0 address and details
@@ -249,7 +307,6 @@ ifconfig # Display information about network interfaces
 traceroute host # Display the path that packets take to host
 tcpdump # Capture and analyze network traffic
 </code></pre>
-
 <h2 id="archives-tar-files">ARCHIVES (TAR FILES)</h2>
 <pre><code>tar cf archive.tar directory # Create tar named archive.tar containing directory.
 tar xf archive.tar # Extract the contents from archive.tar.
@@ -258,7 +315,6 @@ tar xzf archive.tar.gz # Extract a gzip compressed tar file.
 tar cjf archive.tar.bz2 directory # Create a tar file with bzip2 compression
 tar xjf archive.tar.bz2 # Extract a bzip2 compressed tar file.
 </code></pre>
-
 <h2 id="installing-packages">INSTALLING PACKAGES</h2>
 <pre><code>yum search keyword # Search for a package by keyword.
 yum install package # Install package.
@@ -276,7 +332,6 @@ apt-get upgrade # Upgrade all installed packages to their newest version for Deb
 apt-get install package # Install package with name package for Debian based systems.
 apt-remove package # Remove package with name package for Debian based systems.
 </code></pre>
-
 <h2 id="search">SEARCH</h2>
 <pre><code>grep pattern file # Search for pattern in file
 grep -r pattern directory # Search recursively for pattern in directory
@@ -286,7 +341,6 @@ find /home -size +100M # Find files larger than 100MB in /home
 whereis program # Display the location of the binary, source and manual page files of program.
 which program # Display the path of executable that would run if program is executed.
 </code></pre>
-
 <h2 id="ssh-logins">SSH LOGINS</h2>
 <pre><code>ssh host # Connect to host as your local username.
 ssh user@host # Connect to host as user
@@ -294,7 +348,6 @@ ssh -p port user@host # Connect to host using port
 ssh-keygen # Create a new SSH key pair.
 ssh-copy-id user@host # Copy SSH key to the remote host to enable passwordless logins for user.
 </code></pre>
-
 <h2 id="file-transfers">FILE TRANSFERS</h2>
 <pre><code>scp file.txt server:/tmp # Secure copy file.txt to the /tmp folder on server
 scp server:/var/www/*.html /tmp # Copy *.html files from server to the local /tmp folder.
@@ -303,7 +356,6 @@ rsync -a /home /backups/ # Synchronize /home to /backups/home
 rsync -avz /home server:/backups/ # Synchronize files/directories between the local and remote system with compression enabled
 ftp host # Connect to FTP server on the remote host.
 </code></pre>
-
 <h2 id="disk-usage">DISK USAGE</h2>
 <pre><code>df -h # Show free and used space on mounted filesystems
 df -i # Show free and used inodes on mounted filesystems
@@ -313,14 +365,12 @@ du -sh # Display total disk usage off the current directory
 du -a directory # Display size of all files in directory.
 findmnt # List all mounted file systems with details.
 </code></pre>
-
 <h2 id="directory-navigation">DIRECTORY NAVIGATION</h2>
 <pre><code>cd .. # To go up one level of the directory tree. (Change into the parent directory.)
 cd # Go to the $HOME directory
 cd /etc # Change to the /etc directory
 alias goto=’cd /etc/’ # Create goto alias for command cd /etc/ .
 </code></pre>
-
 <h2 id="security">SECURITY</h2>
 <pre><code>passwd # Change the current user's password.
 sudo -i # Switch to the root account with root's environment. (Login shell.)
@@ -335,12 +385,12 @@ SELINUX=enforcing # Set the SELinux mode to enforcing on boot by using this sett
 SELINUX=permissive # Set the SELinux mode to permissive on boot by using this setting in the /etc/selinux/config file.
 SELINUX=disabled # Set the SELinux mode to disabled on boot by using this setting in the /etc/selinux/config file.
 </code></pre>
-
 <h2 id="logging-and-auditing">LOGGING AND AUDITING</h2>
 <pre><code>dmesg # Display messages in kernel ring buffer.
 journalctl # Display logs stored in the systemd journal.
 journalctl -u servicename # Display logs for a specific unit (service).
 </code></pre></div>
+            </div>
         </div>
 
         <footer class="col-md-12">
@@ -349,40 +399,37 @@ journalctl -u servicename # Display logs for a specific unit (service).
         </footer>
         <script>
             var base_url = "../..",
-                shortcuts = {"search": 83, "next": 78, "help": 191, "previous": 80};
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
         <script src="../../js/base.js" defer></script>
         <script src="../../search/main.js" defer></script>
 
-        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
-    <div class="modal-dialog">
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
             </div>
             <div class="modal-body">
-                <p>
-                    From here you can search these documents. Enter
-                    your search terms below.
-                </p>
-                <form role="form">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
                     </div>
                 </form>
-                <div id="mkdocs-search-results"></div>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
             </div>
             <div class="modal-footer">
             </div>
         </div>
     </div>
-</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
             </div>
             <div class="modal-body">
               <table class="table">
